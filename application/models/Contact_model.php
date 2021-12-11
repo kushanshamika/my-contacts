@@ -13,6 +13,19 @@ class Contact_model extends CI_Model {
         return $query->result();
     }
 
+    public function delete_contact($contact_id)
+    {
+        $this->db->where('id', $contact_id);
+        $this->db->delete('contacts');
+    }
+
+    public function create_contact($data)
+    {
+        $insert_query = $this->db->insert('contacts', $data);
+
+        return $insert_query;
+    }
+
     public function get_contact_by_id($contact_id)
     {
         $this->db->select('*');
