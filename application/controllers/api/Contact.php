@@ -33,7 +33,7 @@ class Contact extends RestController {
         $contacts = $this->contact_model->get_contacts();
         if ( $contacts )
         {
-            $this->response( ['data' => $contacts], 200 );
+            $this->response( $contacts, 200 );
         }
         else
         {
