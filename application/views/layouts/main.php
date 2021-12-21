@@ -12,11 +12,11 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" />
     <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js" integrity="sha512-TioVFI1HfPAFh7BGAsuCB76vIrmMroWB+yRNKnTan26OBCdpdH9DWYoTxZbjW8kCKH3QDItheAEVso5N7+w75g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Underscore -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.2/underscore-min.js" integrity="sha512-anTuWy6G+usqNI0z/BduDtGWMZLGieuJffU89wUU7zwY/JhmDzFrfIZFA3PY7CEX4qxmn3QXRoXysk6NBh5muQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js" integrity="sha512-fUWG46/k5JrNjsIwQfNuxUJdXszE/xovm1MVeV6pZ0kvNo/uCi7ayVUAauGzqS/pcUEFRhX9uswruAjXYqArdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Backbone -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone-min.js" integrity="sha512-9EgQDzuYx8wJBppM4hcxK8iXc5a1rFLp/Chug4kIcSWRDEgjMiClF8Y3Ja9/0t8RDDg19IfY5rs6zaPS9eaEBw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" integrity="sha512-v7seAU/AOOqe4qwrsR+/B4oXJ/NoTF6Q+ClLGDHqAZrff86DmijO/sQq96QHte4H8xGzP4ZfeVeXzDXaKezuTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body class="bg-light">
 <div class="container">
@@ -37,15 +37,22 @@
 
     <div class="row pt-4">
         <div class="col-sm-3"><?php $this->load->view('layouts/navbar'); ?></div>
-        <div class="col-sm-9"><?php $this->load->view('home_view'); ?></div>
+        <div class="col-sm-9">
+          <div class="page"></div>
+        </div>
     </div>
 </div>
+    <?php $this->load->view('home_view'); ?>
+    <?php $this->load->view('contacts/create_view'); ?>
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
     <!-- JS  -->
     <script type="text/javascript" src="<?php echo base_url(); ?>js/helpers/url_helper.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/helpers/form_helper.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/collections/Contacts.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/models/Contact.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/views/ContactList.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/views/CreateContact.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/routers/app.js"></script>
 </body>
 </html>

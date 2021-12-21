@@ -1,5 +1,3 @@
-<div class="page"></div>
-
 <script type="text/template" id="contact-list-template">
     <table class="table align-middle">
     <thead>
