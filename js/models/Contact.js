@@ -1,3 +1,3 @@
 var Contact = Backbone.Model.extend({
-    url: '/contact'
+    urlRoot: '/contact'
 })

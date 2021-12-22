@@ -22,7 +22,7 @@
 <div class="container">
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="<?php echo base_url(); ?>">
       <img
         src="<?php echo base_url(); ?>assets/images/logo.png"
         class="me-2"

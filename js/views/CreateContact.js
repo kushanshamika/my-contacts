@@ -1,8 +1,19 @@
 var CreateContact = Backbone.View.extend({
     el: '.page',
-    render: function () {
-        var template = _.template($('#create-contact-template').html(), {});
-        this.$el.html(template)
+    render: function (options) {
+        var that = this;
+        if (options.id) {
+            var contact = new Contact({id: options.id});
+            contact.fetch({
+                success: function (contact) {
+                    var template = _.template($('#create-contact-template').html(), {contact: contact});
+                    that.$el.html(template)
+                }
+            })
+        } else {
+            var template = _.template($('#create-contact-template').html(), {contact: null});
+            this.$el.html(template)
+        }
     },
     events: {
         'submit .create-user-form': 'saveContact'

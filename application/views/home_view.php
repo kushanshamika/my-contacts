@@ -17,10 +17,10 @@
                 <td><%= contact.get('contact') %></td>
                 <td>Work</td>
                 <td>
-                    <button type="button" class="btn btn-warning btn-sm px-3">
+                    <a class="btn btn-warning btn-sm px-3" href="#/edit/<%= contact.get('id') %>">
                         <i class="fas fa-pencil-alt"></i>
-                    </button>
-                    <button type="button" class="btn btn-danger btn-sm px-3">
+                    </a>
+                    <button type="button" class="btn btn-danger btn-sm px-3 delete">
                         <i class="fas fa-times"></i>
                     </button>
                 </td>
