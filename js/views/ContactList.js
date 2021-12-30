@@ -7,7 +7,6 @@ var ContactList = Backbone.View.extend({
             success: function() {
                 var template = _.template($('#contact-list-template').html(), {contacts: contacts.models});
                 that.$el.html(template);
-                // that.$el.append(template({contacts: contacts.models}))
             }
         })
     }

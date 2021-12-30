@@ -19,18 +19,18 @@
                     aria-describedby="basic-addon1" name="email" value="<%= contact ? contact.get('email') : '' %>" />
             </div>
 
-            <% if(contact) { %>
-                <input type="hidden" value="<%= contact.id %>" name="id">
-            <% }; %>
-
             <div class="input-group mb-3">
                 <span class="input-group-text border-0" id="basic-addon3"><i class="fas fa-phone-alt"></i></span>
                 <input type="text" class="form-control" placeholder="Phone" aria-label="Phone"
                     aria-describedby="basic-addon1" name="contact" value="<%= contact ? contact.get('contact') : '' %>" />
             </div>
 
-            <div class="input-group mb-3">
-                <button class="btn btn-primary">save</button>
+            <div class="mb-3">
+                <button class="btn btn-primary mr-1">save</button>
+                <% if(contact) { %>
+                    <input type="hidden" value="<%= contact.id %>" name="id">
+                    <button type="button" class="btn btn-danger delete">Delete</button>
+                <% }; %>
             </div>
         </form>
     </div>

@@ -3,8 +3,8 @@ var CreateContact = Backbone.View.extend({
     render: function (options) {
         var that = this;
         if (options.id) {
-            var contact = new Contact({id: options.id});
-            contact.fetch({
+            that.contact = new Contact({id: options.id});
+            that.contact.fetch({
                 success: function (contact) {
                     var template = _.template($('#create-contact-template').html(), {contact: contact});
                     that.$el.html(template)
@@ -16,7 +16,8 @@ var CreateContact = Backbone.View.extend({
         }
     },
     events: {
-        'submit .create-user-form': 'saveContact'
+        'submit .create-user-form': 'saveContact',
+        'click .delete' : 'deleteContact'
     },
     saveContact: function (ev) {
         var contactDetails = $(ev.currentTarget).serializeObject();
@@ -24,6 +25,14 @@ var CreateContact = Backbone.View.extend({
         contact.save(contactDetails, {
             success: function (contact) {
                 router.navigate('', {trigger: true})
+            }
+        })
+        return false;
+    },
+    deleteContact: function(ev) {
+        this.contact.destroy({
+            success: function() {
+                router.navigate('', {trigger: true});
             }
         })
         return false;

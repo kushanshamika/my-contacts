@@ -15,14 +15,15 @@
                 <td><%= contact.get('f_name') %> <%= contact.get('l_name') %></td>
                 <td><%= contact.get('email') %></td>
                 <td><%= contact.get('contact') %></td>
-                <td>Work</td>
+                <td>
+                    <span class="badge bg-primary">Primary</span>
+                    <span class="badge bg-secondary">Secondary</span>
+                    <span class="badge bg-success">Success</span>
+                </td>
                 <td>
                     <a class="btn btn-warning btn-sm px-3" href="#/edit/<%= contact.get('id') %>">
                         <i class="fas fa-pencil-alt"></i>
                     </a>
-                    <button type="button" class="btn btn-danger btn-sm px-3 delete">
-                        <i class="fas fa-times"></i>
-                    </button>
                 </td>
             </tr>
         <% }); %>
