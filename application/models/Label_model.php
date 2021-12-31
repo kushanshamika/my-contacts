@@ -19,6 +19,22 @@ class Label_model extends CI_Model {
 
         return $insert_query;
     }
+
+    public function get_label_by_id($label_id)
+    {
+        $this->db->select('*');
+        $this->db->from('labels');
+        $this->db->where('id', $label_id);
+        $query = $this->db->get();
+
+        return $query->row();
+    }
+
+    public function delete_label($label_id)
+    {
+        $this->db->where('id', $label_id);
+        $this->db->delete('labels');
+    }
 }
 
 ?>

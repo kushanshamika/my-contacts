@@ -22,7 +22,7 @@
 <div class="container">
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<?php echo base_url(); ?>">
+    <a class="navbar-brand" href="#/">
       <img
         src="<?php echo base_url(); ?>assets/images/logo.png"
         class="me-2"
@@ -42,17 +42,33 @@
         </div>
     </div>
 </div>
+
+    <!-- Template -->
     <?php $this->load->view('home_view'); ?>
     <?php $this->load->view('contacts/create_view'); ?>
+    <?php $this->load->view('labels/label_view.php'); ?>
+    <?php $this->load->view('labels/create_view.php'); ?>
+
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
-    <!-- JS  -->
+
+    <!-- Helper JS  -->
     <script type="text/javascript" src="<?php echo base_url(); ?>js/helpers/url_helper.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/helpers/form_helper.js"></script>
+
+    <!-- Contact JS -->
     <script type="text/javascript" src="<?php echo base_url(); ?>js/collections/Contacts.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/models/Contact.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/views/ContactList.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/views/CreateContact.js"></script>
+
+    <!-- Label JS -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/views/LabelList.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/views/CreateLabel.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/collections/Labels.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/models/Label.js"></script>
+
+    <!-- Router JS -->
     <script type="text/javascript" src="<?php echo base_url(); ?>js/routers/app.js"></script>
 </body>
 </html>

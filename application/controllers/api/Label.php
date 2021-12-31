@@ -10,12 +10,32 @@ class Label extends RestController {
         parent::__construct();
     }
 
+    public function index_get($id)
+    {
+
+        $label = $this->label_model->get_label_by_id($id);
+
+        if ( $label )
+        {
+            $this->response( $label, 200 );
+        }
+        else
+        {
+            $this->response( [
+                'status' => false,
+                'message' => 'No such label found'
+            ], 404 );
+        }
+    }
+
     public function index_post()
     {
         $label_name = $this->post('label_name');
+        $label_color = $this->post('label_color');
 
         $data = array(
-            'name' => $label_name
+            'label_name' => $label_name,
+            'label_color' => $label_color
         );
 
         $data = $this->security->xss_clean($data);
@@ -42,5 +62,15 @@ class Label extends RestController {
                 'message' => 'No labels were found'
             ], 404 );
         }
+    }
+
+    public function index_delete($id)
+    {
+        $this->label_model->delete_label($id);
+
+        $this->response( [
+            'id' => $id,
+            'message' => 'Deleted the label'
+        ], 204 );
     }
 }
