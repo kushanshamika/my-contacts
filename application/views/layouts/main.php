@@ -17,6 +17,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js" integrity="sha512-fUWG46/k5JrNjsIwQfNuxUJdXszE/xovm1MVeV6pZ0kvNo/uCi7ayVUAauGzqS/pcUEFRhX9uswruAjXYqArdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Backbone -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" integrity="sha512-v7seAU/AOOqe4qwrsR+/B4oXJ/NoTF6Q+ClLGDHqAZrff86DmijO/sQq96QHte4H8xGzP4ZfeVeXzDXaKezuTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 <body class="bg-light">
 <div class="container">
