@@ -8,7 +8,9 @@ var CreateContact = Backbone.View.extend({
             var labels = new Labels();
             labels.fetch({
                 success: function() {
-                    var template = _.template($('#create-contact-template').html(), {contact: that.contact, labels: labels.models});
+                    var tags = that.contact.get('tags');
+                    tags = tags !== null ? tags.split(",") : [];
+                    var template = _.template($('#create-contact-template').html(), {contact: that.contact, labels: labels.models, tags: tags});
                     that.$el.html(template);
                     $('.form-select').select2();
                 }
@@ -17,7 +19,7 @@ var CreateContact = Backbone.View.extend({
             var labels = new Labels();
             labels.fetch({
                 success: function() {
-                    var template = _.template($('#create-contact-template').html(), {contact: null, labels: labels.models});
+                    var template = _.template($('#create-contact-template').html(), {contact: null, tags: null, labels: labels.models});
                     that.$el.html(template);
                     $('.form-select').select2();
                 }

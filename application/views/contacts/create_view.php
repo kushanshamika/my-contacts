@@ -30,7 +30,7 @@
             <div class="mb-3">
                 <select class="form-select" aria-label="Select Labels" name="tags" multiple="multiple">
                     <% _.each(labels, function(label) { %>
-                        <option value="<%= label.get('id') %>"><%= label.get('label_name') %></option>
+                        <option value="<%= label.get('id') %>" <%= tags.includes(label.get('id')) ? 'selected' : '' %>><%= label.get('label_name') %></option>
                     <% }); %>
                 </select>
             </div>

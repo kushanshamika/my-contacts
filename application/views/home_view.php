@@ -16,9 +16,12 @@
                 <td><%= contact.get('email') %></td>
                 <td><%= contact.get('contact') %></td>
                 <td>
-                    <span class="badge bg-primary">Primary</span>
-                    <span class="badge bg-secondary">Secondary</span>
-                    <span class="badge bg-success">Success</span>
+                    <% _.each(JSON.parse(contact.get('tags')), function(tag) { %>
+                        <span class="badge bg-<%= tag.color %>"><%= tag.name %></span>
+                    <% }); %>
+                    
+                    <!-- <span class="badge bg-secondary">Secondary</span>
+                    <span class="badge bg-success">Success</span> -->
                 </td>
                 <td>
                     <a class="btn btn-warning btn-sm px-3" href="#/edit/<%= contact.get('id') %>">

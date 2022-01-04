@@ -60,6 +60,7 @@ class Contact extends RestController {
         $l_name = $this->post('l_name');
         $contact = $this->post('contact');
         $email = $this->post('email');
+        $tags = $this->post('tags');
 
         $data = array(
             'f_name' => $f_name,
@@ -70,7 +71,7 @@ class Contact extends RestController {
 
         $data = $this->security->xss_clean($data);
 
-        if ($this->contact_model->create_contact($data)) {
+        if ($this->contact_model->create_contact($data, $tags)) {
             $this->response([
                 'status' => true,
                 'message' => 'Contact was succesfully created'
