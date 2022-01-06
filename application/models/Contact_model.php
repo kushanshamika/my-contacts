@@ -4,23 +4,27 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Contact_model extends CI_Model {
 
-    public function get_contacts()
+    public function get_contacts($l_name, $label)
     {
-        // $this->db->select('*');
-        // $this->db->from('contacts');
-        // $this->db->join('contact_label', 'contact_label.contact_id = contacts.id', 'left');
-        // $this->db->join('labels', 'labels.id = contact_label.label_id', 'left');
-        // $query = $this->db->get();
 
-        // return $query->result();
-
-        $query = $this->db->query("
+        $sql = "
         select contacts.id, contacts.f_name, contacts.l_name, contacts.contact, contacts.email, JSON_ARRAYAGG(JSON_OBJECT('id',contact_label.label_id, 'name', labels.label_name, 'color', labels.label_color)) as tags
         from contacts 
         left join contact_label on contacts.id = contact_label.contact_id
         left join labels on labels.id = contact_label.label_id
-        group by contacts.id;
-        ");
+         ";
+
+        if (isset($l_name)) {
+            $sql = $sql."where contacts.l_name like '%$l_name%' ";
+        }
+
+        $sql = $sql."group by contacts.id ";
+
+        if (isset($label)) {
+            $sql = $sql."having sum(contact_label.label_id = '$label') > 0;";
+        }
+
+        $query = $this->db->query($sql);
 
         return $query->result_array();
     }

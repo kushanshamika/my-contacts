@@ -30,7 +30,10 @@ class Contact extends RestController {
 
     public function all_get()
     {
-        $contacts = $this->contact_model->get_contacts();
+        $l_name = $this->get('l_name');
+        $label = $this->get("label");
+
+        $contacts = $this->contact_model->get_contacts($l_name, $label);
         if ( $contacts )
         {
             $this->response( $contacts, 200 );

@@ -3,23 +3,29 @@ var CreateContact = Backbone.View.extend({
     render: function (options) {
         var that = this;
         if (options.id) {
+            that.labels = new Labels();
             that.contact = new Contact({id: options.id});
-            that.contact.fetch()
-            var labels = new Labels();
-            labels.fetch({
-                success: function() {
-                    var tags = that.contact.get('tags');
+
+            that.labels.fetch({
+                success: function(labels) {
+                    that.labels = labels.models;
+                }
+            });
+            
+            that.contact.fetch({
+                success: function(contact) {
+                    var tags = contact.get('tags');
                     tags = tags !== null ? tags.split(",") : [];
-                    var template = _.template($('#create-contact-template').html(), {contact: that.contact, labels: labels.models, tags: tags});
+                    var template = _.template($('#create-contact-template').html(), {contact: contact, labels: that.labels, tags: tags});
                     that.$el.html(template);
                     $('.form-select').select2();
                 }
-            });
+            })
         } else {
             var labels = new Labels();
             labels.fetch({
                 success: function() {
-                    var template = _.template($('#create-contact-template').html(), {contact: null, tags: null, labels: labels.models});
+                    var template = _.template($('#create-contact-template').html(), {contact: null, tags: [], labels: labels.models});
                     that.$el.html(template);
                     $('.form-select').select2();
                 }
