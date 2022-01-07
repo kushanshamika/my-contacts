@@ -3,19 +3,18 @@ var ContactList = Backbone.View.extend({
     render: function () {
         var that = this;
         that.labels = new Labels();
-        that.labels.filterOptions = "";
+        that.contacts = new Contacts();
         that.labels.fetch({
             success: function(labels){
-                that.labels = labels.models
+                that.labels = labels.models;
+                that.contacts.fetch({
+                    success: function(contacts) {
+                        var template = _.template($('#contact-list-template').html(), {contacts: contacts.models, labels: that.labels});
+                        that.$el.html(template);
+                    }
+                })
             }
         });
-        var contacts = new Contacts();
-        contacts.fetch({
-            success: function() {
-                var template = _.template($('#contact-list-template').html(), {contacts: contacts.models, labels: that.labels});
-                that.$el.html(template);
-            }
-        })
     },
     events: {
         'click .search': 'searchContact'

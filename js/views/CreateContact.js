@@ -9,18 +9,17 @@ var CreateContact = Backbone.View.extend({
             that.labels.fetch({
                 success: function(labels) {
                     that.labels = labels.models;
+                    that.contact.fetch({
+                        success: function(contact) {
+                            var tags = contact.get('tags');
+                            tags = tags !== null ? tags.split(",") : [];
+                            var template = _.template($('#create-contact-template').html(), {contact: contact, labels: that.labels, tags: tags});
+                            that.$el.html(template);
+                            $('.form-select').select2();
+                        }
+                    })
                 }
             });
-            
-            that.contact.fetch({
-                success: function(contact) {
-                    var tags = contact.get('tags');
-                    tags = tags !== null ? tags.split(",") : [];
-                    var template = _.template($('#create-contact-template').html(), {contact: contact, labels: that.labels, tags: tags});
-                    that.$el.html(template);
-                    $('.form-select').select2();
-                }
-            })
         } else {
             var labels = new Labels();
             labels.fetch({
