@@ -31,6 +31,9 @@ class Contact_model extends CI_Model {
 
     public function delete_contact($contact_id)
     {
+        $this->db->where('contact_id', $contact_id);
+        $this->db->delete('contact_label');
+        
         $this->db->where('id', $contact_id);
         $this->db->delete('contacts');
     }
@@ -50,6 +53,42 @@ class Contact_model extends CI_Model {
         }
 
         return $insert_query;
+    }
+
+    public function update_contact($id, $data, $tags)
+    {
+        $this->db->where('id', $id);
+        $update_query = $this->db->update('contacts', $data);
+
+        $this->db->select('label_id');
+        $this->db->from('contact_label');
+        $this->db->where('contact_id ', $id);
+        $query = $this->db->get();
+
+        $contactTags = array();
+        foreach($query->result_array() as $tag){
+            $contactTags[] = $tag['label_id'];
+        }
+
+        foreach($tags as $tag){
+            if (!in_array($tag, $contactTags)) {
+                $contact_label = array(
+                    'label_id' => $tag,
+                    'contact_id' => $id
+                );
+                $this->db->insert('contact_label', $contact_label);
+            }
+        }
+
+        foreach($contactTags as $tag){
+            if (!in_array($tag, $tags)) {
+                $this->db->where('label_id', $tag);
+                $this->db->where('contact_id ', $id);
+                $this->db->delete('contact_label');
+            }
+        }
+
+        return $update_query;
     }
 
     public function get_contact_by_id($contact_id)

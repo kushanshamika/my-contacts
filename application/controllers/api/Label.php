@@ -48,6 +48,27 @@ class Label extends RestController {
         }
     }
 
+    public function index_put($id)
+    {
+        
+        $label_name = $this->put('label_name');
+        $label_color = $this->put('label_color');
+
+        $data = array(
+            'label_name' => $label_name,
+            'label_color' => $label_color
+        );
+
+        $data = $this->security->xss_clean($data);
+
+        if ($this->label_model->update_label($id, $data)) {
+            $this->response([
+                'status' => true,
+                'message' => 'Label was succesfully created'
+            ], 200);
+        }
+    }
+
     public function all_get()
     {
         $labels = $this->label_model->get_labels();

@@ -13,6 +13,14 @@ class Label_model extends CI_Model {
         return $query->result();
     }
 
+    public function update_label($id, $data)
+    {
+        $this->db->where('id', $id);
+
+        return $this->db->update('labels', $data);
+
+    }
+
     public function create_label($data)
     {
         $insert_query = $this->db->insert('labels', $data);

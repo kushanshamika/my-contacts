@@ -74,11 +74,44 @@ class Contact extends RestController {
 
         $data = $this->security->xss_clean($data);
 
+        $tags = is_array($tags) ? $tags : array($tags);
+
         if ($this->contact_model->create_contact($data, $tags)) {
             $this->response([
                 'status' => true,
                 'message' => 'Contact was succesfully created'
             ], 201);
+        }
+    }
+
+    public function index_put($id)
+    {
+        $f_name = $this->put('f_name');
+        $l_name = $this->put('l_name');
+        $contact = $this->put('contact');
+        $email = $this->put('email');
+        $tags = $this->put('tags');
+
+        $data = array(
+            'f_name' => $f_name,
+            'l_name' => $l_name,
+            'contact' => $contact,
+            'email' => $email
+        );
+
+        $data = $this->security->xss_clean($data);
+
+        $tags = is_array($tags) ? $tags : array($tags);
+
+        $result = $this->contact_model->update_contact($id, $data, $tags);
+
+        if ($result) {
+            // $this->response([
+            //     'status' => true,
+            //     'message' => 'Contact was succesfully created'
+            // ], 201);
+
+            $this->response( $result, 200 );
         }
     }
 }
