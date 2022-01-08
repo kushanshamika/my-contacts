@@ -1,14 +1,15 @@
 <script type="text/template" id="create-label-template">
     <div class="col-8">
-        <form class="create-label-form">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Label name" aria-label="Label Name"
-                    aria-describedby="basic-addon1" name="label_name" value="<%= label ? label.get('label_name') : '' %>" />
+        <form class="row g-3 create-label-form">
+            
+            <div class="col-md-12 input_validation">
+                <label for="validationServer01" class="form-label">Label name</label>
+                <input type="text" class="form-control" id="validationServer01" name="label_name" value="<%= label ? label.get('label_name') : '' %>">
+                <div class="invalid-feedback hidden"></div>
             </div>
 
-            <label for="btn-check" class="form-label">Label Color</label>
-
-            <div class="input-group mb-3">
+            <div class="col-md-12 input_validation">
+                <label for="btn-check" class="form-label">Label Color</label>
                 <div class="btn-toolbar">
                     <input type="radio" class="btn-check" name="label_color" id="primary" autocomplete="off" value="primary" <%= label_color=='primary' ? 'checked' : '' %>/>
                     <label class="btn btn-primary mx-2" for="primary">&nbsp;</label>
@@ -30,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="mb-3">
+            <div class="col-12">
                 <button class="btn btn-primary mr-1">save</button>
                 <% if(label) { %>
                     <input type="hidden" value="<%= label.id %>" name="id">

@@ -2,6 +2,8 @@ var CreateLabel = Backbone.View.extend({
     el: '.page',
     render: function (options) {
         var that = this;
+        that.model = new Label();
+        Backbone.Validation.bind(that);
         if (options.id) {
             that.label = new Label({id: options.id});
             that.label.fetch({
@@ -22,12 +24,14 @@ var CreateLabel = Backbone.View.extend({
     },
     saveLabel: function (ev) {
         var labelDetails = $(ev.currentTarget).serializeObject();
-        var label = new Label();
-        label.save(labelDetails, {
-            success: function (label) {
-                router.navigate('label', {trigger: true})
-            }
-        })
+        this.model.set(labelDetails);
+        if(this.model.isValid(true)){
+            this.model.save(null, {
+                success: function (contact) {
+                    router.navigate('label', {trigger: true})
+                }
+            })
+        }
         return false;
     },
     deleteLabel: function(ev) {

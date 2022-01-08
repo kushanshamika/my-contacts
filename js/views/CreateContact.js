@@ -2,6 +2,8 @@ var CreateContact = Backbone.View.extend({
     el: '.page',
     render: function (options) {
         var that = this;
+        that.model = new Contact();
+        Backbone.Validation.bind(that);
         if (options.id) {
             that.labels = new Labels();
             that.contact = new Contact({id: options.id});
@@ -37,12 +39,14 @@ var CreateContact = Backbone.View.extend({
     },
     saveContact: function (ev) {
         var contactDetails = $(ev.currentTarget).serializeObject();
-        var contact = new Contact();
-        contact.save(contactDetails, {
-            success: function (contact) {
-                router.navigate('', {trigger: true})
-            }
-        })
+        this.model.set(contactDetails);
+        if(this.model.isValid(true)){
+            this.model.save(null, {
+                success: function (contact) {
+                    router.navigate('', {trigger: true})
+                }
+            })
+        }
         return false;
     },
     deleteContact: function(ev) {

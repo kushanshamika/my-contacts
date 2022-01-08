@@ -51,6 +51,10 @@
     <?php $this->load->view('contacts/create_view'); ?>
     <?php $this->load->view('labels/label_view.php'); ?>
     <?php $this->load->view('labels/create_view.php'); ?>
+    
+
+    <!-- Backbone Validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.validation/0.11.5/backbone-validation-min.js" integrity="sha512-C1hfT7OF4lLztKjFERWG3+ZqtjJUTPymzurSQSViGfQcTY1MMEyGNnz4PxpyzM/e4JqDp6HflPH+R5xq+MWB5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
@@ -58,6 +62,8 @@
     <!-- Helper JS  -->
     <script type="text/javascript" src="<?php echo base_url(); ?>js/helpers/url_helper.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/helpers/form_helper.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/helpers/validation_helper.js"></script>
+    
 
     <!-- Contact JS -->
     <script type="text/javascript" src="<?php echo base_url(); ?>js/collections/Contacts.js"></script>
