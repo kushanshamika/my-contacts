@@ -25,7 +25,7 @@ var CreateLabel = Backbone.View.extend({
     saveLabel: function (ev) {
         var labelDetails = $(ev.currentTarget).serializeObject();
         this.model.set(labelDetails);
-        if(this.model.isValid(true)){
+        if(this.model.isValid()){
             this.model.save(null, {
                 success: function (contact) {
                     router.navigate('label', {trigger: true})

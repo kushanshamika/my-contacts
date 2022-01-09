@@ -74,7 +74,12 @@ class Contact extends RestController {
 
         $data = $this->security->xss_clean($data);
 
-        $tags = is_array($tags) ? $tags : array($tags);
+        if (isset($tags)) {
+            $tags = $this->post('tags');
+            $tags = is_array($tags) ? $tags : array($tags);
+        }else {
+            $tags = array();
+        }
 
         if ($this->contact_model->create_contact($data, $tags)) {
             $this->response([
@@ -101,15 +106,16 @@ class Contact extends RestController {
 
         $data = $this->security->xss_clean($data);
 
-        $tags = is_array($tags) ? $tags : array($tags);
+        if (isset($tags)) {
+            $tags = is_array($tags) ? $tags : array($tags);
+        
+        }else {
+            $tags = array();
+        }
 
         $result = $this->contact_model->update_contact($id, $data, $tags);
 
         if ($result) {
-            // $this->response([
-            //     'status' => true,
-            //     'message' => 'Contact was succesfully created'
-            // ], 201);
 
             $this->response( $result, 200 );
         }

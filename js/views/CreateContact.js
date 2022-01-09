@@ -40,7 +40,7 @@ var CreateContact = Backbone.View.extend({
     saveContact: function (ev) {
         var contactDetails = $(ev.currentTarget).serializeObject();
         this.model.set(contactDetails);
-        if(this.model.isValid(true)){
+        if(this.model.isValid()){
             this.model.save(null, {
                 success: function (contact) {
                     router.navigate('', {trigger: true})

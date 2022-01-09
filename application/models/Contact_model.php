@@ -21,8 +21,10 @@ class Contact_model extends CI_Model {
         $sql = $sql."group by contacts.id ";
 
         if (isset($label)) {
-            $sql = $sql."having sum(contact_label.label_id = '$label') > 0;";
+            $sql = $sql."having sum(contact_label.label_id = '$label') > 0 ";
         }
+
+        $sql = $sql. "order by contacts.f_name ";
 
         $query = $this->db->query($sql);
 
