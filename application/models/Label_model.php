@@ -40,6 +40,9 @@ class Label_model extends CI_Model {
 
     public function delete_label($label_id)
     {
+        $this->db->where('label_id ', $label_id);
+        $this->db->delete('contact_label');
+
         $this->db->where('id', $label_id);
         $this->db->delete('labels');
     }
