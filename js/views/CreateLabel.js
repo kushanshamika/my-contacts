@@ -28,6 +28,13 @@ var CreateLabel = Backbone.View.extend({
         if(this.model.isValid()){
             this.model.save(null, {
                 success: function (contact) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Label has been saved',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
                     router.navigate('label', {trigger: true})
                 }
             })
@@ -35,11 +42,30 @@ var CreateLabel = Backbone.View.extend({
         return false;
     },
     deleteLabel: function(ev) {
-        this.label.destroy({
-            success: function() {
-                router.navigate('label', {trigger: true});
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#F93154',
+            cancelButtonColor: '#00B74A',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                this.label.destroy({
+                    success: function() {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Label has been deleted',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+                        router.navigate('label', {trigger: true});
+                    }
+                })
             }
-        })
+          })
         return false;
     }
 });

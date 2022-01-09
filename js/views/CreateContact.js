@@ -43,6 +43,13 @@ var CreateContact = Backbone.View.extend({
         if(this.model.isValid()){
             this.model.save(null, {
                 success: function (contact) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Contact has been saved',
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
                     router.navigate('', {trigger: true})
                 }
             })
@@ -50,11 +57,30 @@ var CreateContact = Backbone.View.extend({
         return false;
     },
     deleteContact: function(ev) {
-        this.contact.destroy({
-            success: function() {
-                router.navigate('', {trigger: true});
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#F93154',
+            cancelButtonColor: '#00B74A',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                this.contact.destroy({
+                    success: function() {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Contact has been deleted',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+                        router.navigate('', {trigger: true});
+                    }
+                })
             }
-        })
+          })
         return false;
     }
 });
