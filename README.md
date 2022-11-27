@@ -9,7 +9,10 @@
 
 <p align="center">Web based solution to manage your contacts ☎️. Build  🛠 using CodeIgniter 3, Backbone.js &  MDBootstrap.</p>
 
-![My Contacts](https://i.ibb.co/Ht229fr/Screenshot-2022-11-27-at-23-34-51.png)
+<p align="center">
+  <img src="https://i.ibb.co/XzjHnh6/Screenshot-2022-11-27-at-23-52-34.png" alt="My Contacts"/>
+</p>
+
 
 ## ⚙️ Prerequisites
 
