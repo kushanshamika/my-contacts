@@ -8,7 +8,7 @@ class Contact_model extends CI_Model {
     {
 
         $sql = "
-        select contacts.id, contacts.f_name, contacts.l_name, contacts.contact, contacts.email, JSON_ARRAYAGG(JSON_OBJECT('id',contact_label.label_id, 'name', labels.label_name, 'color', labels.label_color)) as tags
+        select contacts.id, contacts.f_name, contacts.l_name, contacts.contact, contacts.email, CONCAT('[',GROUP_CONCAT(CONCAT('{\"id\":\"',contact_label.label_id, '\",\"name\":\"', labels.label_name, '\",\"color\":\"', labels.label_color,'\"}')),']') as tags
         from contacts 
         left join contact_label on contacts.id = contact_label.contact_id
         left join labels on labels.id = contact_label.label_id
