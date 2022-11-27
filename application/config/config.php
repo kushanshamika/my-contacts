@@ -23,11 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://w1715093.users.ecs.westminster.ac.uk';
+$config['base_url'] = 'http://localhost:8888/my-contacts';
 
 /*
 http://localhost:8888/my-contacts
 https://w1715093.users.ecs.westminster.ac.uk
+http://220.247.252.35/w1715093/
 */
 
 /*

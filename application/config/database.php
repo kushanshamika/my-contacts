@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'phpmyadmin.ecs.westminster.ac.uk',
-	'username' => 'w1715093',
-	'password' => 'fwjOKK5PnCY5',
-	'database' => 'w1715093_0',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => 'root',
+	'database' => 'my_contacts',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -96,8 +96,8 @@ $db['default'] = array(
 );
 
 /* 
-HOSTNAME		phpmyadmin.ecs.westminster.ac.uk		localhost
-USERNAME		w1715093								root
-PASSWORD		fwjOKK5PnCY5							root
-DATABASE		w1715093_0								my_contacts
+HOSTNAME		phpmyadmin.ecs.westminster.ac.uk		localhost		localhost
+USERNAME		w1715093								root			Stu
+PASSWORD		fwjOKK5PnCY5							root			#abc@321
+DATABASE		w1715093_0								my_contacts		w1715093
 */
